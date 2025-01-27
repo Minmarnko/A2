@@ -55,12 +55,12 @@ For evaluation, the model is run in inference mode (`model.eval()`), and no grad
 The training runs for 100 epochs with a sequence length of 50 tokens and a gradient clipping value of 0.25. A learning rate scheduler adjusts the optimizer's learning rate based on the validation loss. The model's state is saved whenever the validation loss achieves a new minimum. Every 10 epochs, the training and validation perplexity scores are printed to monitor the model's performance.
 
 Key model parameters include:
-- Vocabulary size: \( \text{len(vocab)} \)
+- Vocabulary size: 50
 - Embedding dimension: 1024 (increased from 400 in the paper)
 - Hidden dimension: 1024 (reduced from 1150 in the paper)
 - Number of LSTM layers: 2 (reduced from 3 in the paper)
 - Dropout rate: 0.65
-- Learning rate: \( 1 \times 10^{-3} \)
+- Learning rate: 0.001
 
 To ensure reusability, key model configurations and metadata such as vocabulary size, embedding and hidden dimensions, number of layers, dropout rate, tokenizer, and vocabulary are saved in a dictionary and serialized to a `.pkl` file for future use. 
 
@@ -68,11 +68,12 @@ The final model achieves training and validation perplexity values, which are pe
 
 ## Results
 Training perplexity - 66.747  
-Validation perplexity - 105.329 
+Validation perplexity - 105.329
 Testing perplexity - 101.380
 
 ## Web application and model interface
 The web application is designed to generate a "Gone with the Wind"-style story based on user input. It uses Streamlit for the interface, providing an input box for users to type a prompt and a dropdown menu to select the maximum sequence length (10, 20, or 30 words). The backend loads a pre-trained LSTM model along with its tokenizer and vocabulary from a saved `Data.pkl` file. The generation process begins by passing the user-provided prompt to the `generate` function, which predicts one word at a time, appending each new word to the input until the specified word limit is reached or an `<eos>` token appears. The final generated text is displayed back to the user as a complete story. Enhancements to the code include dynamic handling of the vocabulary size based on the loaded data, robust error handling for cases like missing files or loading issues, and additional user controls for generation parameters, such as temperature and random seed, to allow greater customization of the output. These improvements ensure the application is both functional and user-friendly.
-##Screenshot
+
+## Screenshot
 ![Webapp](A2.png)
 
