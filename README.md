@@ -73,5 +73,6 @@ Testing perplexity - 101.380
 
 ## Web application and model interface
 The web application is designed to generate a "Gone with the Wind"-style story based on user input. It uses Streamlit for the interface, providing an input box for users to type a prompt and a dropdown menu to select the maximum sequence length (10, 20, or 30 words). The backend loads a pre-trained LSTM model along with its tokenizer and vocabulary from a saved `Data.pkl` file. The generation process begins by passing the user-provided prompt to the `generate` function, which predicts one word at a time, appending each new word to the input until the specified word limit is reached or an `<eos>` token appears. The final generated text is displayed back to the user as a complete story. Enhancements to the code include dynamic handling of the vocabulary size based on the loaded data, robust error handling for cases like missing files or loading issues, and additional user controls for generation parameters, such as temperature and random seed, to allow greater customization of the output. These improvements ensure the application is both functional and user-friendly.
-
+##Screenshot
+![Webapp](A2.png)
 
